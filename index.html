@@ -6,8 +6,6 @@
 <title>Millie’s 16th Birthday Trip — NYC (Mobile Guide)</title>
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#0aa0ad">
-
-<!-- Social sharing -->
 <meta property="og:title" content="Millie’s 16th Birthday Trip — NYC (Mobile Guide)">
 <meta property="og:description" content="All the bookings, maps, food, and fun in one place.">
 <meta property="og:type" content="website">
@@ -16,7 +14,6 @@
 <style>
   :root{
     --teal:#0aa0ad;
-    --teal-600:#098190;
     --teal-100:#d8f1f4;
     --ink:#0f1b2a;
     --muted:#5b6b7a;
@@ -25,35 +22,30 @@
     --line:#e7eef1;
     --btn:#0aa0ad;
     --btn-ink:#ffffff;
+    --radius:14px;
+    --chip-h:44px;
+    --wrap:760px;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#0c1116;
-      --card:#10161c;
-      --ink:#e9f1f5;
-      --muted:#a6b3bf;
-      --line:#1a232c;
-      --teal-100:#113c42;
-      --btn-ink:#eaffff;
+      --bg:#0c1116; --card:#10161c; --ink:#e9f1f5; --muted:#a6b3bf; --line:#1a232c; --teal-100:#113c42; --btn-ink:#eaffff;
     }
   }
 
-  /* Base */
+  /* Base (mobile-first) */
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
-    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    -webkit-text-size-adjust:100%}
+    font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto} *{animation:none!important;transition:none!important}
   }
-  .wrap{max-width:760px;margin:0 auto;padding:16px 16px 72px}
-  h1,h2,h3{margin:0 0 10px}
-  h1{font-size:1.8rem;font-weight:800;letter-spacing:.2px}
-  h2{font-size:1.2rem;font-weight:800;margin-top:20px;display:flex;align-items:center;gap:8px}
-  h3{font-size:1.05rem;font-weight:800;margin-top:16px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:12px 12px 72px}
+  h1,h2,h3{margin:0 0 8px}
+  h1{font-size:1.5rem;font-weight:800;letter-spacing:.2px}
+  h2{font-size:1.05rem;font-weight:800;margin-top:16px;display:flex;align-items:center;gap:8px}
+  h3{font-size:1rem;font-weight:800;margin-top:12px}
   .lead{color:var(--muted);font-size:.95rem}
-  .pill{display:inline-block;background:var(--teal-100);color:var(--teal);padding:6px 12px;border-radius:999px;font-weight:800;font-size:.9rem;margin:8px 0}
+  .pill{display:inline-block;background:var(--teal-100);color:var(--teal);padding:6px 10px;border-radius:999px;font-weight:800;font-size:.85rem;margin:8px 0}
   .hr{height:2px;background:linear-gradient(90deg,var(--teal),transparent);border-radius:2px;margin:8px 0 6px}
   .subtle{color:var(--muted)}
   .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95rem;cursor:pointer}
@@ -63,42 +55,40 @@
   .skip:focus{left:12px;top:12px;z-index:1000;background:#000;color:#fff;padding:8px 12px;border-radius:8px}
 
   /* Cards & lists */
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px;margin:12px 0;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin:10px 0;box-shadow:0 1px 0 rgba(0,0,0,.04)}
   ul.clean{list-style:none;padding:0;margin:0}
-  ul.clean li{padding:12px 0;border-bottom:1px dashed var(--line)}
+  ul.clean li{padding:10px 0;border-bottom:1px dashed var(--line)}
   ul.clean li:last-child{border-bottom:none}
   .item-title{font-weight:800}
 
-  /* Buttons/links (refined sizing) */
+  /* Buttons/links */
   a.btn{
-    display:inline-flex; align-items:center; justify-content:center;
-    text-decoration:none; background:var(--btn); color:var(--btn-ink);
-    padding:8px 12px; border-radius:12px; font-weight:800;
-    margin:8px 8px 0 0; min-height:40px; line-height:1.2; font-size:.95rem;
-    vertical-align:middle; gap:6px;
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    text-decoration:none;background:var(--btn);color:var(--btn-ink);
+    padding:8px 12px;border-radius:12px;font-weight:800;margin:8px 8px 0 0;
+    min-height:40px;line-height:1.2;font-size:.95rem;vertical-align:middle;
   }
   a.btn:active{transform:scale(.98)}
   a.link{color:var(--teal);text-decoration:none;font-weight:700;min-height:32px;line-height:1.2;display:inline-block}
   a.link:active{opacity:.85}
-
-  /* Focus styles */
-  a.btn, a.link, .chip, details.area summary, .topfab, .mini-btn { outline: none; }
-  a.btn:focus, a.link:focus, .chip:focus, details.area summary:focus, .topfab:focus, .mini-btn:focus {
-    box-shadow:0 0 0 3px color-mix(in oklab, var(--teal) 60%, transparent);
-    border-radius:12px;
+  a.btn, a.link, .chip, details.area summary, .topfab, .mini-btn {outline: none;}
+  a.btn:focus, a.link:focus, .chip:focus, details.area summary:focus, .topfab:focus, .mini-btn:focus{
+    box-shadow:0 0 0 3px color-mix(in oklab, var(--teal) 60%, transparent);border-radius:12px;
   }
 
-  /* Sticky quick-nav (refined) */
+  /* Sticky quick-nav (equal-size chips, scroll highlights) */
   .quicknav{
-    position:sticky;top:0;z-index:20;background:color-mix(in oklab, var(--bg) 85%, transparent);
-    backdrop-filter:saturate(120%) blur(6px);
-    border-bottom:1px solid var(--line);padding:10px 12px;
+    position:sticky;top:0;z-index:20;background:color-mix(in oklab, var(--bg) 92%, transparent);
+    backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line);padding:8px 10px;
   }
-  .chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .chips{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;
+  }
   .chip{
-    display:inline-flex;align-items:center;justify-content:center;
-    padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.95rem;
-    border:1px solid var(--teal);color:var(--teal);background:transparent;min-height:40px;
+    display:inline-grid;place-items:center;
+    height:var(--chip-h);border-radius:999px;font-weight:800;
+    text-decoration:none;font-size:.95rem;border:1.5px solid var(--teal);
+    color:var(--teal);background:transparent;
     transition:transform .08s ease, background .12s ease, color .12s ease, border-color .12s ease;
   }
   .chip:hover{background:var(--teal-100)}
@@ -107,56 +97,52 @@
 
   /* Sections */
   .section{
-    background:linear-gradient(180deg, rgba(10,160,173,.10), transparent 60%);
-    border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:18px;
-    scroll-margin-top:64px;
+    background:linear-gradient(180deg, rgba(10,160,173,.08), transparent 60%);
+    border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-top:14px;scroll-margin-top:72px;
   }
-  .tag{background:var(--teal);color:#fff;border-radius:8px;padding:2px 8px;font-size:.8rem;font-weight:800}
+  .tag{background:var(--teal);color:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;font-weight:800}
   :target .hr{box-shadow:0 0 0 3px rgba(10,160,173,.25)}
 
-  /* Collapsible blocks (CLOSED by default) */
-  details.area{
-    border:1px solid var(--line); border-radius:14px; margin:12px 0; background:var(--card);
-  }
-  details.area[open]{ box-shadow:0 1px 0 rgba(0,0,0,.05) }
+  /* Collapsible blocks (closed by default) */
+  details.area{border:1px solid var(--line);border-radius:var(--radius);margin:10px 0;background:var(--card)}
+  details.area[open]{box-shadow:0 1px 0 rgba(0,0,0,.05)}
   details.area summary{
-    cursor:pointer; list-style:none; padding:14px; font-weight:800; color:var(--teal);
-    display:flex; align-items:center; gap:10px; min-height:44px; line-height:1.2;
+    cursor:pointer;list-style:none;padding:12px;font-weight:800;color:var(--teal);
+    display:flex;align-items:center;gap:10px;min-height:44px;line-height:1.2;
   }
-  details.area[open] summary{ color:var(--ink) }
-  details.area summary::-webkit-details-marker{ display:none }
+  details.area[open] summary{color:var(--ink)}
+  details.area summary::-webkit-details-marker{display:none}
   details.area summary .caret{
-    width:10px; height:10px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
-    transform:rotate(-45deg); transition:transform .2s ease;
+    width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+    transform:rotate(-45deg);transition:transform .2s ease;
   }
-  details.area[open] summary .caret{ transform:rotate(45deg) }
-  .area-body{ padding:0 14px 10px }
-  .key{font-size:.95rem;color:var(--teal);background:var(--teal-100);padding:10px 12px;border-radius:10px;margin:8px 0 10px 0;font-weight:800}
+  details.area[open] summary .caret{transform:rotate(45deg)}
+  .area-body{padding:0 12px 10px}
+  .key{font-size:.95rem;color:var(--teal);background:var(--teal-100);padding:8px 10px;border-radius:10px;margin:6px 0 8px;font-weight:800}
 
-  /* Expand/Collapse all controls */
+  /* Expand/Collapse all */
   .bulk-toggle{display:flex;gap:8px;margin:6px 0 10px;flex-wrap:wrap}
   .mini-btn{
-    appearance:none; border:1px solid var(--teal); background:transparent; color:var(--teal);
-    font-weight:800; border-radius:999px; padding:6px 10px; cursor:pointer; line-height:1.1; font-size:.9rem;
+    appearance:none;border:1.5px solid var(--teal);background:transparent;color:var(--teal);
+    font-weight:800;border-radius:999px;padding:6px 10px;cursor:pointer;line-height:1.1;font-size:.9rem;
   }
-  .mini-btn:hover{ background:var(--teal-100) }
-  .mini-btn:active{ transform:scale(.98) }
+  .mini-btn:hover{background:var(--teal-100)}
+  .mini-btn:active{transform:scale(.98)}
 
-  /* Floating Back-to-Top */
+  /* Back-to-top */
   .topfab{
-    position:fixed;right:14px;bottom:16px;z-index:30;
-    background:var(--teal);color:#fff;border:none;border-radius:999px;
-    padding:12px 14px;font-weight:900;box-shadow:0 6px 18px rgba(0,0,0,.15);
+    position:fixed;right:12px;bottom:14px;z-index:30;background:var(--teal);color:#fff;border:none;
+    border-radius:999px;padding:10px 12px;font-weight:900;box-shadow:0 6px 18px rgba(0,0,0,.15);
     opacity:.95;transition:opacity .2s;
   }
   .topfab.hidden{opacity:0;pointer-events:none}
   .topfab:active{transform:scale(.98)}
 
-  /* Print/PDF tweaks */
+  /* Print */
   @media print{
     .quicknav,.topfab,.skip{display:none}
     a.btn{background:#000;color:#fff}
-    a[href^="http"]:after{ content:" (" attr(href) ")"; font-size:.9em; word-break:break-all }
+    a[href^="http"]:after{content:" (" attr(href) ")";font-size:.9em;word-break:break-all}
   }
 
   /* Copy feedback */
@@ -165,22 +151,20 @@
 </head>
 <body>
   <a id="top"></a>
-
-  <!-- Skip link for screen readers / keyboard -->
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Sticky quick-nav -->
+  <!-- Equal-size top chips -->
   <nav class="quicknav" aria-label="Section jump">
     <div class="chips">
-      <a class="chip" href="#thu">Thu</a>
-      <a class="chip" href="#fri">Fri</a>
-      <a class="chip" href="#sat">Sat</a>
-      <a class="chip" href="#sun">Sun</a>
-      <a class="chip" href="#mon">Mon</a>
-      <a class="chip" href="#dining">Dining</a>
-      <a class="chip" href="#shopping">Shopping</a>
-      <a class="chip" href="#sightseeing">Sightseeing</a>
-      <a class="chip" href="#tips">Tips</a>
+      <a class="chip" href="#thu" data-target="thu">Thu</a>
+      <a class="chip" href="#fri" data-target="fri">Fri</a>
+      <a class="chip" href="#sat" data-target="sat">Sat</a>
+      <a class="chip" href="#sun" data-target="sun">Sun</a>
+      <a class="chip" href="#mon" data-target="mon">Mon</a>
+      <a class="chip" href="#dining" data-target="dining">Dining</a>
+      <a class="chip" href="#shopping" data-target="shopping">Shopping</a>
+      <a class="chip" href="#sightseeing" data-target="sightseeing">Sights</a>
+      <a class="chip" href="#tips" data-target="tips">Tips</a>
     </div>
   </nav>
 
@@ -191,18 +175,18 @@
       Dates: <strong>25–30 Sep 2025</strong> • Primary Contact: <strong>Sam Read</strong> —
       <a class="link" href="tel:+447545639420">+44 7545 639 420</a>
     </div>
-    <div class="pill">Tap a chip above to jump</div>
+    <div class="pill">Tap a chip to jump</div>
 
-    <!-- ITINERARY (not collapsible) -->
+    <!-- ITINERARY -->
     <section class="section" id="thu">
       <h2>Thu 25 Sep — Drive to Heathrow <span class="tag">Hotel</span></h2>
       <div class="hr"></div>
       <div class="card">
         <ul class="clean">
-          <li>🏨 <span class="item-title">Courtyard by Marriott London Heathrow Airport</span> • Res: <span class="mono">72065865938980</span></li>
+          <li>🏨 <span class="item-title">Courtyard by Marriott London Heathrow Airport</span> • Res: <span class="mono">72065865938980</span> (Hotels.com App)</li>
           <li>📍 1 Nobel Drive, Harlington, Hayes, UB3 5EY —
             <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Courtyard+by+Marriott+London+Heathrow+Airport+1+Nobel+Drive+UB3+5EY">Open in Maps</a></li>
-          <li>🕒 Check-in 15:00 • Check-out 12:00</li>
+          <li>🕒 Check-in 15:00 • Depart hotel by 06:00</li>
         </ul>
       </div>
     </section>
@@ -214,11 +198,11 @@
         <ul class="clean">
           <li>🅿️ <span class="item-title">Heathrow T3 Short Stay – Car Park 1A</span> • Ref: <span class="mono">ALQHQZ</span> • Opens 06:00 —
             <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Heathrow+Terminal+3+Short+Stay+Car+Park+1A">Maps</a></li>
-          <li>🛫 <span class="item-title">Virgin Atlantic Check-in</span> • T3 Zone A (Premium Economy lane) → Fast Track Security</li>
-          <li>🛋 <span class="item-title">My Lounge T3</span> from 08:00 (near Gate 9) —
+          <li>🛫 <span class="item-title">Virgin Atlantic Check-in</span> • T3 Zone A (Premium Economy lane) → Fast Track Security (Ref: <span class="mono">ALQHQZ</span>) </li>
+          <li>🛋 <span class="item-title">My Lounge T3</span> from 08:00 (near Gate 9) — (Ref: <span class="mono">ALQHQZ</span>)
             <a class="btn" href="https://www.heathrow.com/at-the-airport/airport-lounges/my-lounge-terminal-3">Info</a></li>
           <li>✈️ <span class="item-title">VS0003 LHR→JFK</span> 09:35→12:45 • Booking Ref: <span class="mono">CUHIKS</span></li>
-          <li>🛬 JFK T4 arrivals → Baggage & Customs (~60–75 mins). Driver meets in Arrivals Hall.</li>
+          <li>🛬 JFK T4 arrivals → Baggage & Customs (~60–75 mins). Driver meets in Arrivals Hall. Ref: <span class="mono">MR2172376954</span> <a class="link" href="tel:+1 8008144204">+18008144204</a></li>
           <li>🏨 <span class="item-title">Hilton Garden Inn Times Square Central</span> • Res: <span class="mono">3328819488</span> (Hilton app)<br>
             📍 136 W 42nd St, New York, NY 10036 —
             <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Hilton+Garden+Inn+Times+Square+Central+136+W+42nd+St+NYC">Maps</a></li>
@@ -269,7 +253,7 @@
       </div>
     </section>
 
-    <!-- DINING (collapsible, CLOSED by default) -->
+    <!-- DINING (collapsible, CLOSED) -->
     <section class="section" id="dining">
       <h2>Appendix A — Dining <span class="tag">By Area</span></h2>
       <div class="hr"></div>
@@ -351,7 +335,7 @@
       </details>
     </section>
 
-    <!-- SHOPPING (collapsible, CLOSED by default) -->
+    <!-- SHOPPING (collapsible, CLOSED) -->
     <section class="section" id="shopping">
       <h2>Appendix B — Shopping <span class="tag">By Area</span></h2>
       <div class="hr"></div>
@@ -414,7 +398,7 @@
       </details>
     </section>
 
-    <!-- SIGHTseeing (collapsible, CLOSED by default) -->
+    <!-- SIGHTSEEING (collapsible, CLOSED) -->
     <section class="section" id="sightseeing">
       <h2>Appendix C — Sightseeing <span class="tag">By Area</span></h2>
       <div class="hr"></div>
@@ -525,86 +509,71 @@
       </div>
     </section>
 
-    <!-- Floating back-to-top -->
     <a class="topfab" href="#top" aria-label="Back to top">🔝</a>
   </main>
 
   <script>
-  // Ensure all collapsibles start CLOSED (in case 'open' sneaks in)
+  // Ensure all collapsibles start CLOSED
   document.querySelectorAll('details.area[open]').forEach(d => d.removeAttribute('open'));
 
-  // Highlight "today" during the trip (device local date)
-  (() => {
-    const tripDays = [
-      { id: 'thu', date: '2025-09-25' },
-      { id: 'fri', date: '2025-09-26' },
-      { id: 'sat', date: '2025-09-27' },
-      { id: 'sun', date: '2025-09-28' },
-      { id: 'mon', date: '2025-09-29' },
-    ];
-    const todayStr = new Date().toISOString().slice(0,10);
-    const match = tripDays.find(d => d.date === todayStr);
-    if(match){
-      const sec = document.getElementById(match.id);
-      if(sec){
-        const h2 = sec.querySelector('h2');
-        const badge = document.createElement('span');
-        badge.className = 'tag';
-        badge.textContent = 'Today';
-        h2.appendChild(badge);
-        const chip = document.querySelector(`.chips a[href="#${match.id}"]`);
-        if(chip){ chip.classList.add('is-active'); }
-      }
-    }
-  })();
-
-  // Make the chip corresponding to the hash look active on load
-  const setActiveChip = () => {
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('is-active'));
-    const hash = decodeURIComponent(location.hash || '');
-    if(hash){
-      const active = document.querySelector(`.chips a[href="${hash}"]`);
-      if(active){ active.classList.add('is-active'); }
-    }
-  };
-  window.addEventListener('hashchange', setActiveChip);
-  setActiveChip();
-
-  // Hide back-to-top near the top
+  // Back-to-top hide near top
   const fab = document.querySelector('.topfab');
   const onScroll = () => fab.classList.toggle('hidden', window.scrollY < 300);
-  addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   // Copy-on-tap for codes/refs
   document.addEventListener('click', e => {
     const t = e.target.closest('.mono'); if(!t) return;
     const sel = window.getSelection(); const r = document.createRange();
     r.selectNodeContents(t); sel.removeAllRanges(); sel.addRange(r);
-    try{
-      document.execCommand('copy');
-      t.dataset.copied='✓ copied';
+    try{ document.execCommand('copy'); t.dataset.copied='✓ copied';
       setTimeout(()=>{t.dataset.copied=''; sel.removeAllRanges();}, 1200);
     }catch{}
   });
 
-  // Force all http(s) links to open in a new tab (keep site in place)
+  // Force all http(s) links to open in new tab
   document.querySelectorAll('a[href^="http"]').forEach(a => {
-    a.setAttribute('target','_blank');
-    a.setAttribute('rel','noopener noreferrer');
+    a.setAttribute('target','_blank'); a.setAttribute('rel','noopener noreferrer');
   });
 
-  // Expand/Collapse all controls (per appendix scope)
+  // Expand/Collapse all per appendix
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.bulk-toggle .mini-btn');
-    if(!btn) return;
-    const scopeSel = btn.parentElement.dataset.scope;
-    const act = btn.dataset.act; // 'open' or 'close'
+    const btn = e.target.closest('.bulk-toggle .mini-btn'); if(!btn) return;
+    const scopeSel = btn.parentElement.dataset.scope; const act = btn.dataset.act;
     document.querySelectorAll(`${scopeSel} details.area`).forEach(d => {
-      if(act === 'open') d.setAttribute('open', '');
-      else d.removeAttribute('open');
+      if(act === 'open') d.setAttribute('open',''); else d.removeAttribute('open');
     });
   });
+
+  // Scroll-based highlighting for chips (NOT date-based)
+  const sections = ['thu','fri','sat','sun','mon','dining','shopping','sightseeing','tips']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const chips = new Map([...document.querySelectorAll('.chip')].map(c => [c.dataset.target, c]));
+
+  const setActive = (id) => {
+    chips.forEach(c => c.classList.remove('is-active'));
+    const hit = chips.get(id);
+    if(hit){ hit.classList.add('is-active'); hit.setAttribute('aria-current','true'); }
+  };
+
+  // Observe sections; highlight the one most in view
+  const io = new IntersectionObserver((entries) => {
+    // pick the entry with largest intersection ratio that is intersecting
+    const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio - a.intersectionRatio)[0];
+    if(!visible) return;
+    setActive(visible.target.id);
+  }, { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+  sections.forEach(s => io.observe(s));
+
+  // Also update on hash navigation
+  const setActiveFromHash = () => {
+    const id = (location.hash || '').replace('#','');
+    if(id) setActive(id);
+  };
+  window.addEventListener('hashchange', setActiveFromHash);
+  setActiveFromHash();
   </script>
 </body>
 </html>
+
